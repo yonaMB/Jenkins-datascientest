@@ -2,13 +2,17 @@ pipeline {
     agent any
 
     environment {
-        NOM = 'datascientest'
+        DOCKER_ID = "dstdockerhub"
+        DOCKER_IMAGE = "datascientestapi"
+        DOCKER_TAG = "v.${BUILD_ID}.0"
     }
 
     stages {
-        stage('Test environment') {
+        stage('Test variables Jenkins') {
             steps {
-                sh 'echo $NOM'
+                echo "Docker ID = ${env.DOCKER_ID}"
+                echo "Docker Image = ${env.DOCKER_IMAGE}"
+                echo "Docker Tag = ${env.DOCKER_TAG}"
             }
         }
     }
